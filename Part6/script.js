@@ -1,43 +1,68 @@
-function contar(){
-    var ini = document.getElementById('txti')
-    var fim = document.getElementById('txtf')
-    var passo = document.getElementById('txtp')
-    var res = document.getElementById('res')
+var num = document.querySelector('input#fnum')
+var lista = document.querySelector('select#flista')
+var res = document.querySelector('div#res')
+var valores = []
 
-    if (ini.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
-        //window.alert('[ERRO] Faltam dados!')
-        res.innerHTML = 'Impossível contar!'
-    } else{
-        res.innerHTML = 'Contando: '
-        var i = Number(ini.value)
-        var f = Number(fim.value)
-        var p = Number(passo.value)
-        if (p <= 0){
-            //window.alert('Passo inválido! Considerando PASSO 1')
-            res.innerHTML = 'Passo irá para 1:: '
-            p = 1
-        }
-        if ( i<f){
-            //Contagem Crescente
-            for (var c = i; c <= f; c += p){
-                res.innerHTML += `${c} \u{1F449}` 
-            }
-        } else {
-            //Contagem Decrescente
-            for (var c = i; c >= f; c -= p){
-                res.innerHTML += `${c} \u{1F449}`
-        }
+
+function numero(n){
+    if(Number(n) >= 1 && Number(n) <= 100){
+        return true
+    } else {
+        return false
     }
-    res.innerHTML += `\u{1F3C1}`
-}
-
-
-
 
 }
 
+function inLista(n, l){
+    if (l.indexOf(Number(n)) != -1){
+        return true
+    } else {
+        return false
+    }
+}
+
+function adicionar(){
+    if(numero(num.value) && !inLista(num.value, valores)){
+        valores.push(Number(num.value))
+        var item = document.createElement('option')
+        item.text=`Valor ${num.value} adicionado.`
+        lista.appendChild(item)
+        res.innerHTML = ''
+    } else {
+        window.alert('Valor inválido ou já encontra na lista.')
+    }
+    num.value = ''
+    num.focus()
+}
+
+function finalizar(){
+    if (valores.length == 0){
+        window.alert('Adicione valores antes de finalizar!')
+    } else {
+        var tot = valores.length
+        var maior = valores[0]
+        var menor = valores[0]
+        var soma = 0
+        var media = 0
 
 
+        for(var pos in valores){
+            soma += valores[pos]
+            if (valores[pos]>maior)
+                maior = valores[pos]
+            if (valores[pos]<menor)
+                menor = valores[pos]
+        }
+
+        media = soma/tot
+        res.innerHTML = ''
+        res.innerHTML += `<p> Ao todo, temos ${tot} números cadastrados.</p>`
+        res.innerHTML += `<p>O maior valor informado foi ${maior}</p>`
+        res.innerHTML += `<p>O menor valor informado foi ${menor}</p>`
+        res.innerHTML += `<p>Somando todos os valores informo que temos ${soma}</p>`
+        res.innerHTML += `<p>A média dos valores é ${media}</p>`
+    }
+}
 
  
 
