@@ -1,17 +1,17 @@
 body {
-background: rgb(56, 7, 95);
+background: rgb(25, 212, 66);
 font: normal 15pt Arial;
 }
 
 header {
-        color: rgb(18, 93, 116);
+        color: rgb(71, 65, 65);
         border-radius: center;
 }
 
 section {
-background: rgb(125, 61, 168);
-border: 20px;
-padding: 25px;
+background: rgb(143, 145, 126);
+border: 10px;
+padding: 15px;
 width: 500px;
 margin: auto;
 box-shadow: 3px 3px 10px rgb(0,0,0,0,363);
@@ -19,16 +19,16 @@ box-shadow: 3px 3px 10px rgb(0,0,0,0,363);
 
 div {
     text-align: center;
-    padding: 20px;
+    padding: 10px;
 }
 
 #Imag{
-    width: 25%;   
-    border-radius:25%;
+    width:25%;   
+    border-radius:10%;
 }
 
 footer{
-    color:rgb(109, 18, 18);
+    color:white;
     text-align: center;
     font-style: bold;
 }
